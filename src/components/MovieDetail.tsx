@@ -1,5 +1,5 @@
+import type { MovieProps } from "../types/types";
 import "./MovieDetail.css";
-import type { MovieProps } from "./MovieCard";
 import ShowTimes from "./ShowTimes";
 
 export default function MovieDetail({

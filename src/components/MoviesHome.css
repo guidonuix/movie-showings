@@ -3,3 +3,18 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
+.days-of-week {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.day{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 5px 10px;
+    background-color: #eee;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}

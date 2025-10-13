@@ -1,5 +1,3 @@
-import MovieCard from "./MovieCard";
-import type { MovieProps } from "./MovieCard";
 import "./ShowTimes.css";
 
 type ShowTimesProps = {

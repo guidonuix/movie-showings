@@ -1,19 +1,7 @@
+import type { MovieProps } from "../types/types";
 import "./MovieCard.css";
 import ShowTimes from "./ShowTimes";
 
-export type MovieProps = {
-  title: string;
-  duration: number; // duration in minutes
-  description: string;
-  summary: string;
-  posterUrl: string;
-  filmId: number;
-  showTimes: string[];
-  releaseDate?: string;
-  ratings: number;
-  votes: number;
-  url: string;
-};
 
 export default function MovieCard({
   title,
