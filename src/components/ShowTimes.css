@@ -1,0 +1,12 @@
+.showtimes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time {
+  padding: 5px 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+}

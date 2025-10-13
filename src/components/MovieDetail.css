@@ -1,0 +1,31 @@
+.movie-detail img {
+  height: 400px;
+}
+.card {
+  max-height: 300px;
+  overflow: auto;
+  background-color: #fff;
+  border: 1px solid #ddd; /* Basic border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow for floating effect */
+  padding: 20px;
+  margin: 15px;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-5px); /* Subtle lift on hover */
+  border-color: #007bff; /* Change border color on hover */
+}
+.duration {
+  font-size: 0.9em;
+  color: #666;
+}
+.card-header {
+  display: flex;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+.card-header-text {
+  flex-direction: column;
+}
