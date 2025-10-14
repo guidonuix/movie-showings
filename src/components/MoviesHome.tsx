@@ -8,7 +8,7 @@ export default function MoviesHome() {
   const { movies, setMovies } = useMoviesStore();
 
   const getMovies = () => {
-    fetch("http://localhost:3008/films")
+    fetch(`${import.meta.env.VITE_DATABASE_ROOT_URL}/films`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data); // 'data' is the parsed JSON object

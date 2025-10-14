@@ -8,7 +8,11 @@ export default function ShowTimes({ filmId }: { filmId: number }) {
   const selectedDate = useMoviesStore((s) => s.selectedDate);
 
   useEffect(() => {
-    fetch(`http://localhost:3008/showings/${filmId}/${selectedDate}`)
+    fetch(
+      `${
+        import.meta.env.VITE_DATABASE_ROOT_URL
+      }/showings/${filmId}/${selectedDate}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setTimes(data.map((item: ShowTimeType) => item.showing_time));

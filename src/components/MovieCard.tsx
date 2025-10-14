@@ -14,7 +14,7 @@ export default function MovieCard({
       <div className="movie-card">
         <div className="card-header">
           <img
-            src={"http://localhost:3008/" + poster_path}
+            src={import.meta.env.VITE_DATABASE_ROOT_URL + poster_path}
             alt={`${title} poster`}
             height={150}
             width={100}
