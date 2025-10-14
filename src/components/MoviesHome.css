@@ -1,6 +1,6 @@
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 10px;
 }
 .days-of-week {
@@ -8,13 +8,13 @@
   justify-content: start;
   gap: 10px;
   margin-bottom: 20px;
+  background-color: #eee;
 }
-.day{
-    font-size: 20px;
-    font-weight: 400;
-    padding: 5px 10px;
-    background-color: #eee;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
+.day {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
 }

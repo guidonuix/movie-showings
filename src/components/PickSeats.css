@@ -1,0 +1,17 @@
+.seats-header {
+  font-size: 24px;
+  margin: 20px 0;
+  background-color: #b24bf3;
+  padding: 10px;
+  color: white;
+}
+
+.checkout {
+  font-size: 18px;
+  margin: 20px 0;
+  background-color: #b24bf3;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}

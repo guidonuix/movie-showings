@@ -1,6 +1,7 @@
 import "./App.css";
-import MovieDetail from "./components/MovieDetail";
+// import MovieDetail from "./components/MovieDetail";
 import MoviesHome from "./components/MoviesHome";
+import PickSeats from "./components/PickSeats";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           filmId={1}
           showTimes={["1:00 PM", "4:00 PM", "7:00 PM"]}
         /> */}
-        <MoviesHome  />
+        {/* <MoviesHome  /> */}
+        <PickSeats />
       </main>
       <footer>Copyright ©2025</footer>
     </>
