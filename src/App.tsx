@@ -7,7 +7,13 @@ function App() {
   return (
     <>
       <header>
-        <nav></nav>
+        <nav className="nav">
+          <div>Dinner and a movie</div>
+          <div className="login">
+            <div>Login</div>
+            <div>Register</div>
+          </div>
+        </nav>
       </header>
       <main>
         {/* <MovieDetail
@@ -19,8 +25,8 @@ function App() {
           filmId={1}
           showTimes={["1:00 PM", "4:00 PM", "7:00 PM"]}
         /> */}
-        {/* <MoviesHome  /> */}
-        <PickSeats />
+        <MoviesHome  />
+        {/* <PickSeats /> */}
       </main>
       <footer>Copyright ©2025</footer>
     </>

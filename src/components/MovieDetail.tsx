@@ -4,24 +4,24 @@ import ShowTimes from "./ShowTimes";
 
 export default function MovieDetail({
   title,
-  duration,
-  description,
-  summary,
-  posterUrl,
-  filmId,
+  runtime,
+  overview,
+  tagline,
+  poster_path,
+  id,
 }: MovieProps) {
   return (
     <div className="movie-detail">
       <div className="card-header">
-        <img src={posterUrl} alt={`${title} poster`} />
+        <img src={poster_path} alt={`${title} poster`} />
         <div className="card-header-text">
           <h1>{title}</h1>
-          <p className="duration">Duration: {duration} minutes</p>
+          <p className="duration">Duration: {runtime} minutes</p>
 
-          <h2>{summary}</h2>
-          <p>{description}</p>
+          <h2>{tagline}</h2>
+          <p>{overview}</p>
 
-          <ShowTimes selectedDate={new Date()} filmId={filmId} />
+          <ShowTimes selectedDate={new Date().toISOString()} filmId={id} />
         </div>
       </div>
     </div>
