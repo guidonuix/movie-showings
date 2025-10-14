@@ -1,4 +1,4 @@
-export type MovieProps = {
+export type MovieType = {
   id: number;
   title: string;
   homepage: string;
@@ -18,4 +18,10 @@ export interface ShowTimeType {
   film_id: number;
   theater_id: number;
   showing_time: string;
+}
+
+export interface CartItem {
+  filmId: number;
+  showingTime: string;
+  quantity: number;
 }

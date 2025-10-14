@@ -1,57 +1,58 @@
-interface DatePickerProps {
-  selectedDate?: string;
-  handleDateChange: (date: string) => void;
-}
+import { useShallow } from "zustand/shallow";
+import { useMoviesStore } from "../store/movieStore";
 
-const DatePicker = ({ selectedDate, handleDateChange }: DatePickerProps) => {
+const DatePicker = () => {
+  const [selectedDate, setSelectedDate] = useMoviesStore(
+    useShallow((s) => [s.selectedDate, s.setSelectedDate])
+  );
   return (
     <>
       <h1>
         Showings for{" "}
         {selectedDate
-          ? new Date(selectedDate).toLocaleDateString()
-          : new Date().toISOString()}
+          ? selectedDate.toLocaleDateString()
+          : new Date().toLocaleDateString()}
       </h1>
       <div className="days-of-week">
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-12").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-12T10:00:00.000Z"))}
         >
           Sun
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-13").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-13T10:00:00.000Z"))}
         >
           Mon
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-14").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-14T10:00:00.000Z"))}
         >
           Tue
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-15").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-15T10:00:00.000Z"))}
         >
           Wed
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-16").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-16T10:00:00.000Z"))}
         >
           Thu
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-17").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-17T10:00:00.000Z"))}
         >
           Fri
         </div>
         <div
           className="day"
-          onClick={() => handleDateChange(new Date("2025-10-18").toISOString())}
+          onClick={() => setSelectedDate(new Date("2025-10-18T10:00:00.000Z"))}
         >
           Sat
         </div>

@@ -1,4 +1,4 @@
-import type { MovieProps } from "../types/types";
+import type { MovieType } from "../types/types";
 import "./MovieDetail.css";
 import ShowTimes from "./ShowTimes";
 
@@ -9,7 +9,7 @@ export default function MovieDetail({
   tagline,
   poster_path,
   id,
-}: MovieProps) {
+}: MovieType) {
   return (
     <div className="movie-detail">
       <div className="card-header">
@@ -21,7 +21,7 @@ export default function MovieDetail({
           <h2>{tagline}</h2>
           <p>{overview}</p>
 
-          <ShowTimes selectedDate={new Date().toISOString()} filmId={id} />
+          <ShowTimes filmId={id} />
         </div>
       </div>
     </div>

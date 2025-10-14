@@ -1,17 +1,14 @@
+import { useMoviesStore } from "../store/movieStore";
 import type { ShowTimeType } from "../types/types";
 import "./ShowTimes.css";
 import { useEffect, useState } from "react";
 
-type ShowTimesProps = {
-  selectedDate: string;
-  filmId: number;
-};
-
-export default function ShowTimes({ selectedDate, filmId }: ShowTimesProps) {
+export default function ShowTimes({ filmId }: { filmId: number }) {
   const [times, setTimes] = useState<string[]>([]);
+  const selectedDate = useMoviesStore((s) => s.selectedDate);
 
   useEffect(() => {
-     fetch(`http://localhost:3008/showings/${filmId}/${selectedDate}`)
+    fetch(`http://localhost:3008/showings/${filmId}/${selectedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setTimes(data.map((item: ShowTimeType) => item.showing_time));
