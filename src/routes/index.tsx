@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import MoviesHome from "../components/MoviesHome";
 const Index = () => {
   return (
     <>
-      <h1>Home page</h1>
-      More content here.
+      <MoviesHome />
     </>
   );
 };
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Index,
 });
