@@ -5,23 +5,33 @@ import {
   Outlet,
   useNavigate,
 } from "@tanstack/react-router";
+import useAuth from "../hooks/useAuth";
 const queryClient = new QueryClient();
 
 const RootLayout = () => {
   const navigate = useNavigate();
-
+  const { isAuthenticated, logout } = useAuth();
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <header>
           <nav className="nav">
             <div onClick={() => navigate({ to: "/" })}>Dinner and a movie</div>
-            <div className="login">
-              <div>Login</div>
-              <Link className="register" to="/register">
-                Register
-              </Link>
-            </div>
+
+            {isAuthenticated ? (
+              <div className="logout" onClick={() => logout()}>
+                Logout
+              </div>
+            ) : (
+              <>
+                <Link className="login" to="/login">
+                  Login
+                </Link>
+                <Link className="register" to="/register">
+                  Register
+                </Link>
+              </>
+            )}
           </nav>
         </header>
         <Outlet />
