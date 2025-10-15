@@ -1,12 +1,33 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import {
+  createRootRoute,
+  Link,
+  Outlet,
+  useNavigate,
+} from "@tanstack/react-router";
 const queryClient = new QueryClient();
-const RootLayout = () => (
-  <>
-    <QueryClientProvider client={queryClient}>
-      {/* All your static JSX can go here */}
-      <Outlet />
-    </QueryClientProvider>
-  </>
-);
+
+const RootLayout = () => {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <QueryClientProvider client={queryClient}>
+        <header>
+          <nav className="nav">
+            <div onClick={() => navigate({ to: "/" })}>Dinner and a movie</div>
+            <div className="login">
+              <div>Login</div>
+              <Link className="register" to="/register">
+                Register
+              </Link>
+            </div>
+          </nav>
+        </header>
+        <Outlet />
+        <footer>Copyright ©2025</footer>
+      </QueryClientProvider>
+    </>
+  );
+};
 export const Route = createRootRoute({ component: RootLayout });

@@ -27,7 +27,7 @@ export interface CartItem {
 }
 
 export interface UserType {
-  id: number
+  id?: number
   username: string
   password: string
   first: string

@@ -2,13 +2,13 @@ import { useMutation } from "@tanstack/react-query";
 import type { UserType } from "../types/types";
 import { useState } from "react";
 import "./Register.css";
-interface RegisterProps extends UserType {
+
+interface RegisterProps extends Omit<UserType, "id"> {
   confirmPassword: string;
 }
 
 const Register = () => {
   const [newUser, setNewUser] = useState<RegisterProps>({
-    id: 0,
     username: "",
     password: "",
     first: "",
@@ -23,8 +23,8 @@ const Register = () => {
   });
 
   const { mutate, isPending, error } = useMutation({
-    mutationFn: (newUser: UserType) => {
-      return fetch(`${import.meta.env.VITE_DATABASE_ROOT_URL}/register`, {
+    mutationFn: async (newUser: UserType) => {
+      return await fetch(`${import.meta.env.VITE_DATABASE_ROOT_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,19 @@ const Register = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setNewUser((prev) => ({ ...prev, [name]: value }));
+    
+    if (name.startsWith('creditCard.')) {
+      const creditCardField = name.split('.')[1];
+      setNewUser((prev) => ({
+        ...prev,
+        creditCard: {
+          ...prev.creditCard,
+          [creditCardField]: creditCardField === 'pan' ? value : parseInt(value) || 0
+        }
+      }));
+    } else {
+      setNewUser((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,6 +61,7 @@ const Register = () => {
     <>
       {isPending && <div>Registering...</div>}
       {error && <div>Error registering user</div>}
+      <div className='back-button' onClick={() => history.go(-1)}>&lt; Back</div>
       <div className="container">
         <div className="header">Register</div>
         <form className="form" onSubmit={handleSubmit}>
@@ -102,19 +115,19 @@ const Register = () => {
           />
           <input
             type="text"
-            name="pan"
+            name="creditCard.pan"
             placeholder="Credit Card Number"
             onChange={handleChange}
           />
           <input
             type="number"
-            name="expiryMonth"
+            name="creditCard.expiryMonth"
             placeholder="Expiry Month"
             onChange={handleChange}
           />
           <input
             type="number"
-            name="expiryYear"
+            name="creditCard.expiryYear"
             placeholder="Expiry Year"
             onChange={handleChange}
           />
