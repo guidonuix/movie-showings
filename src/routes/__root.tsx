@@ -16,7 +16,7 @@ const RootLayout = () => {
       <QueryClientProvider client={queryClient}>
         <header>
           <nav className="nav">
-            <div onClick={() => navigate({ to: "/" })}>Dinner and a movie</div>
+            <div className="logo" onClick={() => navigate({ to: "/" })}>Dinner and a movie</div>
 
             {isAuthenticated ? (
               <div className="logout" onClick={() => logout()}>

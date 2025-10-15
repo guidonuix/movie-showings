@@ -5,7 +5,6 @@ import MovieCard from "./MovieCard";
 import "./MoviesHome.css";
 import { useQuery } from "@tanstack/react-query";
 import type { MovieType } from "../types/types";
-import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 export default function MoviesHome() {
   const { isPending, error, data } = useQuery<MovieType[]>({

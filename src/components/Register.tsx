@@ -2,12 +2,16 @@ import { useMutation } from "@tanstack/react-query";
 import type { UserType } from "../types/types";
 import { useState } from "react";
 import "./Register.css";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "@tanstack/react-router";
 
 interface RegisterProps extends Omit<UserType, "id"> {
   confirmPassword: string;
 }
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [newUser, setNewUser] = useState<RegisterProps>({
     username: "",
     password: "",
@@ -36,15 +40,16 @@ const Register = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
-    if (name.startsWith('creditCard.')) {
-      const creditCardField = name.split('.')[1];
+
+    if (name.startsWith("creditCard.")) {
+      const creditCardField = name.split(".")[1];
       setNewUser((prev) => ({
         ...prev,
         creditCard: {
           ...prev.creditCard,
-          [creditCardField]: creditCardField === 'pan' ? value : parseInt(value) || 0
-        }
+          [creditCardField]:
+            creditCardField === "pan" ? value : parseInt(value) || 0,
+        },
       }));
     } else {
       setNewUser((prev) => ({ ...prev, [name]: value }));
@@ -55,13 +60,17 @@ const Register = () => {
     e.preventDefault();
     console.log(newUser);
     mutate(newUser);
+    login(newUser.username, newUser.password);
+    navigate({ to: "/" });
   };
 
   return (
     <>
       {isPending && <div>Registering...</div>}
       {error && <div>Error registering user</div>}
-      <div className='back-button' onClick={() => history.go(-1)}>&lt; Back</div>
+      <div className="back-button" onClick={() => history.go(-1)}>
+        &lt; Back
+      </div>
       <div className="container">
         <div className="header">Register</div>
         <form className="form" onSubmit={handleSubmit}>
