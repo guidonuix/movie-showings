@@ -1,6 +1,5 @@
 .card {
-  max-height: 300px;
-  overflow: auto;
+  height: 300px;
   background-color: #fff;
   border: 1px solid #ddd; /* Basic border */
   border-radius: 8px; /* Rounded corners */

@@ -18,7 +18,7 @@ const PickSeats = ({ showingId }: { showingId: number }) => {
 
   return (
     <div>
-      <div onClick={() => history.go(-1)}>&lt; Back</div>
+      <div className='back-button' onClick={() => history.go(-1)}>&lt; Back</div>
       <div className="seats-header">Where would you like to sit?</div>
       <div>{showtime && new Date(showtime.showing_time).toLocaleString()}</div>
       <div className="checkout">Checkout</div>

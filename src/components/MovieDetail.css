@@ -1,16 +1,10 @@
 .movie-detail img {
   height: 400px;
 }
-.card {
-  max-height: 300px;
-  overflow: auto;
-  background-color: #fff;
-  border: 1px solid #ddd; /* Basic border */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Initial shadow for floating effect */
-  padding: 20px;
-  margin: 15px;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+.detail {
+  margin-top: 40px;
+  width: 80%;
+  margin: auto;
 }
 .card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
@@ -28,4 +22,15 @@
 }
 .card-header-text {
   flex-direction: column;
+}
+.back-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 3em;
 }
