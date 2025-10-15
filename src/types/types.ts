@@ -25,3 +25,23 @@ export interface CartItem {
   showingTime: string;
   quantity: number;
 }
+
+export interface UserType {
+  id: number
+  username: string
+  password: string
+  first: string
+  last: string
+  phone: string
+  email: string
+  imageUrl: string
+  creditCard: CreditCardType
+  adminUser: boolean
+  isServer: boolean
+}
+
+export interface CreditCardType {
+  pan: string
+  expiryMonth: number
+  expiryYear: number
+}
