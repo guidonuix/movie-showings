@@ -13,7 +13,7 @@ export type MovieType = {
   vote_count: number;
 };
 
-export interface ShowTimeType {
+export interface ShowtimeType {
   id: number;
   film_id: number;
   theater_id: number;

@@ -3,10 +3,12 @@ import { useMoviesStore } from "../store/movieStore";
 import type { MovieType } from "../types/types";
 import "./MovieDetail.css";
 import ShowTimes from "./ShowTimes";
+import { useNavigate } from "@tanstack/react-router";
 
 export default function MovieDetail({ id }: { id: number }) {
   const { movies, setMovies } = useMoviesStore();
   const [movie, setMovie] = useState<MovieType | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (movies.length === 0) {
@@ -23,6 +25,7 @@ export default function MovieDetail({ id }: { id: number }) {
 
   return (
     <div className="movie-detail">
+        <div onClick={() => navigate({ to: '/' })}>&lt; Back</div>
       <div className="card-header">
         <img src={import.meta.env.VITE_DATABASE_ROOT_URL +movie?.poster_path} alt={`${movie?.title} poster`} />
         <div className="card-header-text">
