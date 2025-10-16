@@ -2,10 +2,7 @@ import { useRef } from "react";
 import "./Register.css";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "@tanstack/react-router";
-
-// interface RegisterProps extends Omit<UserType, "id"> {
-//   confirmPassword: stri  ng;
-// }
+import "./Form.css";
 
 const Login = () => {
   const { login } = useAuth();
@@ -31,21 +28,25 @@ const Login = () => {
         &lt; Back
       </div>
       <div className="container">
-        <div className="header">Login</div>
         <form className="form" onSubmit={handleSubmit}>
-          <input
-            ref={usernameRef}
-            type="text"
-            name="username"
-            placeholder="Username"
-          />
-          <input
-            ref={passwordRef}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-
+          <div className='form-group'>
+            <label htmlFor="username">Username:</label>
+            <input
+              ref={usernameRef}
+              type="text"
+              name="username"
+              placeholder="Username"
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor="password">Password:</label>
+            <input
+              ref={passwordRef}
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </div>
           <button type="submit">Login</button>
         </form>
       </div>
