@@ -94,7 +94,10 @@ const PickOrder = () => {
               <span className="text-sm text-gray-500 font-medium uppercase">
                 {order.status}
               </span>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                onClick={() => navigate({ to: `/order-detail/${order.id}` })}
+              >
                 View Details
               </button>
             </div>
@@ -126,7 +129,10 @@ const PickOrder = () => {
               <span className="text-sm text-gray-500 font-medium uppercase">
                 {order.status}
               </span>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                onClick={() => navigate({ to: `/order-detail/${order.id}` })}
+              >
                 View Details
               </button>
             </div>
