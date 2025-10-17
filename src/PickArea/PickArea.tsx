@@ -1,8 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Theater } from "../types/types";
 import { useSelectedTheaterStore } from "../store/selectedTheaterStore";
+import { useNavigate } from "@tanstack/react-router";
+import useAuth from "../hooks/useAuth";
 
 const PickArea = () => {
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const { selectedTheaterId, setSelectedTheaterId } = useSelectedTheaterStore();
 
   const { isPending, error, data } = useQuery<Theater[]>({
@@ -14,8 +18,6 @@ const PickArea = () => {
       return response.json();
     },
   });
-
-  console.log("Selected Theater ID:", selectedTheaterId);
 
   if (isPending)
     return (
@@ -49,6 +51,11 @@ const PickArea = () => {
       </div>
     );
 
+  if (!isAuthenticated) {
+    navigate({ to: "/" });
+    return;
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-8">
@@ -80,7 +87,10 @@ const PickArea = () => {
               <div className="flex items-center justify-between">
                 <button
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  onClick={() => {setSelectedTheaterId(theater.id)}}
+                  onClick={() => {
+                    setSelectedTheaterId(theater.id);
+                    navigate({ to: "/pick-orders" });
+                  }}
                 >
                   Select
                 </button>

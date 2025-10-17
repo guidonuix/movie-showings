@@ -18,15 +18,11 @@ const WaitersLogin = () => {
     const password = passwordRef.current?.value || "";
 
     if (username && password) {
-      // login(username, password).then(() => {
-      //     navigate({ to: "/" });
-      //   });
       const user = await login(username, password);
       if (user && user.isServer) {
-        navigate({ to: "/" });
+        navigate({ to: "/pick-area" });
       } else {
         setError("Invalid credentials");
-        //alert("Invalid credentials");
       }
     }
   };

@@ -52,6 +52,13 @@ export interface Theater {
   tables: Table[]
 }
 
+export interface Order{
+  id: number
+  area: string
+  status: string
+  userId:number
+}
+
 export interface Table {
   id: number
   table_number: number

@@ -22,10 +22,10 @@ const RootLayout = () => {
 
             {isAuthenticated ? (
               <>
-                <Link className="nav-item orders" to="/">
+                <Link className="nav-item orders" to="/pick-orders">
                   Orders
                 </Link>
-                <Link className="nav-item areas" to="/">
+                <Link className="nav-item areas" to="/pick-area">
                   Areas
                 </Link>
                 <div className="nav-item logout" onClick={() => logout()}>
@@ -43,7 +43,6 @@ const RootLayout = () => {
                 </Link>
               </>
             )}
-            <Link to="/pick-area">Pick Area</Link>
           </nav>
         </header>
         <Outlet />

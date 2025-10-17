@@ -17,7 +17,7 @@ const Login = () => {
 
     if (username && password) {
       login(username, password).then(() => {
-        navigate({ to: "/" });
+        navigate({ to: "/pick-area" });
       });
     }
   };
@@ -29,7 +29,7 @@ const Login = () => {
       </div>
       <div className="container">
         <form className="form" onSubmit={handleSubmit}>
-          <div className='form-group'>
+          <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
               ref={usernameRef}
@@ -38,7 +38,7 @@ const Login = () => {
               placeholder="Username"
             />
           </div>
-          <div className='form-group'>
+          <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
               ref={passwordRef}
