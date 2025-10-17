@@ -45,3 +45,23 @@ export interface CreditCardType {
   expiryMonth: number
   expiryYear: number
 }
+
+export interface Theater {
+  id: number
+  name: string
+  tables: Table[]
+}
+
+export interface Table {
+  id: number
+  table_number: number
+  row: number
+  column: number
+  seats: Seat[]
+}
+
+export interface Seat {
+  id: number
+  seat_number: number
+  price: number
+}

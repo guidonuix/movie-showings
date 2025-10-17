@@ -25,10 +25,12 @@ function App() {
           filmId={1}
           showTimes={["1:00 PM", "4:00 PM", "7:00 PM"]}
         /> */}
-        <MoviesHome  />
+        <MoviesHome />
         {/* <PickSeats /> */}
       </main>
-      <footer>Copyright ©2025</footer>
+      <footer className="bg-gray-800 text-white text-center py-4 mt-8">
+        Copyright ©2025
+      </footer>
     </>
   );
 }

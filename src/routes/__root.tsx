@@ -32,6 +32,7 @@ const RootLayout = () => {
                 </Link>
               </>
             )}
+            <Link to="/pick-area">Pick Area</Link>
           </nav>
         </header>
         <Outlet />

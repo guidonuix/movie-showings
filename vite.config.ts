@@ -3,22 +3,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { coverageConfigDefaults } from "vitest/config";
-// export default defineConfig({
-//   plugins: [
-//     tanstackRouter({
-//       // <-- This is the router compiler
-//       target: "react",
-//       autoCodeSplitting: true,
-//     }),
-//     react(),
-//   ],
-// });
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [tanstackRouter(), react()],
+  plugins: [tanstackRouter(), react(), tailwindcss(),],
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/test-setup.ts"],
+    setupFiles: ["./src/setupTests.ts"],
     maxConcurrency: 10,
     coverage: {
       reporter: ["text"],
