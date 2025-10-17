@@ -3,13 +3,12 @@
 import type { MovieType } from "../types/types";
 import "./MovieDetail.css";
 import ShowTimes from "./ShowTimes";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
 export default function MovieDetail({ id }: { id: number }) {
   // const { movies, setMovies } = useMoviesStore();
   // const [movie, setMovie] = useState<MovieType | null>(null);
-  const navigate = useNavigate();
 
   const { isPending, error, data } = useQuery<MovieType[]>({
     queryKey: ["films"],
@@ -39,9 +38,12 @@ export default function MovieDetail({ id }: { id: number }) {
 
   return (
     <div className="movie-detail">
-      <div className="back-button" onClick={() => navigate({ to: "/" })}>
+      <Link className="back-button" to="/">
         &lt; Back
-      </div>
+      </Link>
+      {/* <div className="back-button" onClick={() => navigate({ to: "/" })}>
+        &lt; Back
+      </div> */}
       <div className="detail">
         <div className="card-header">
           <img
