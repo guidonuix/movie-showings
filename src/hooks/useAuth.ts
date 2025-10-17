@@ -13,7 +13,7 @@ function useAuth() {
 
   const login = async (username: string, password: string) => {
     if (!user) {
-      await fetch(`${import.meta.env.VITE_DATABASE_ROOT_URL}/login`, {
+      return await fetch(`${import.meta.env.VITE_DATABASE_ROOT_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,8 +23,11 @@ function useAuth() {
         .then((response) => response.json())
         .then((data) => {
           setUser(data);
+          return data;
         });
     }
+
+    return user;
   };
 
   const logout = () => {
