@@ -43,7 +43,7 @@ const RootLayout = () => {
                 </Link>
               </>
             )}
-            <Link to="/pick-area">Pick Area</Link>
+            <Link to="/order-detail/$orderId" params={{ orderId: '1001' }}>Order detail</Link>
           </nav>
         </header>
         <Outlet />

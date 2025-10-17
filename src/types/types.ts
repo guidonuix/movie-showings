@@ -46,22 +46,54 @@ export interface CreditCardType {
   expiryYear: number
 }
 
-export interface Theater {
+export interface TheaterType {
   id: number
   name: string
-  tables: Table[]
+  tables: TableType[]
 }
 
-export interface Table {
+export interface TableType {
   id: number
   table_number: number
   row: number
   column: number
-  seats: Seat[]
+  seats: SeatType[]
 }
 
-export interface Seat {
+export interface SeatType {
   id: number
   seat_number: number
   price: number
+}
+
+export interface OrderType {
+  id: number
+  userId: number
+  orderTime: string
+  pickupTime: string
+  area: string
+  location: string
+  tax: number
+  tip: number
+  creditCard: CreditCardType
+  items: ItemType[]
+  status: string
+}
+
+export interface ItemType {
+  id: number
+  itemId: number
+  price: number
+  firstName: string
+  notes?: string
+}
+
+export interface MenuItemType {
+  id: number
+  name: string
+  description: string
+  category: string
+  price: number
+  imageUrl: string
+  available: boolean
 }

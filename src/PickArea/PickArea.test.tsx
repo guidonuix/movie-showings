@@ -37,11 +37,11 @@ const rootRoute = createRootRoute({
 }
 
 describe("PickArea", ()=>{
-    test("should display theater names,", ()=>{
+    test("should display theater names,", async ()=>{
         // Arrange
         // Act
         renderComponent();
         // Assert
-        expect(screen.getByText("John Wayne Theater")).toBeInTheDocument();
+        expect(await screen.findByText(/John Wayne Theater/i)).toBeInTheDocument();
     })
 })

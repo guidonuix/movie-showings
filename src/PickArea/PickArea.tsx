@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import type { Theater } from "../types/types";
+import type { TheaterType } from "../types/types";
 import { useSelectedTheaterStore } from "../store/selectedTheaterStore";
 
 const PickArea = () => {
   const { selectedTheaterId, setSelectedTheaterId } = useSelectedTheaterStore();
 
-  const { isPending, error, data } = useQuery<Theater[]>({
+  const { isPending, error, data } = useQuery<TheaterType[]>({
     queryKey: ["theaters"],
     queryFn: async () => {
       const response = await fetch(

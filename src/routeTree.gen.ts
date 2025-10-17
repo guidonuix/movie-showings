@@ -15,6 +15,7 @@ import { Route as PickAreaRouteImport } from './routes/pick-area'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PickSeatsShowingIdRouteImport } from './routes/pick-seats/$showingId'
+import { Route as OrderDetailOrderIdRouteImport } from './routes/order-detail/$orderId'
 import { Route as MovieMovieIdRouteImport } from './routes/movie/$movieId'
 
 const WaitersloginRoute = WaitersloginRouteImport.update({
@@ -47,6 +48,11 @@ const PickSeatsShowingIdRoute = PickSeatsShowingIdRouteImport.update({
   path: '/pick-seats/$showingId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderDetailOrderIdRoute = OrderDetailOrderIdRouteImport.update({
+  id: '/order-detail/$orderId',
+  path: '/order-detail/$orderId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MovieMovieIdRoute = MovieMovieIdRouteImport.update({
   id: '/movie/$movieId',
   path: '/movie/$movieId',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/order-detail/$orderId': typeof OrderDetailOrderIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/order-detail/$orderId': typeof OrderDetailOrderIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/order-detail/$orderId': typeof OrderDetailOrderIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/waiterslogin'
     | '/movie/$movieId'
+    | '/order-detail/$orderId'
     | '/pick-seats/$showingId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/waiterslogin'
     | '/movie/$movieId'
+    | '/order-detail/$orderId'
     | '/pick-seats/$showingId'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/waiterslogin'
     | '/movie/$movieId'
+    | '/order-detail/$orderId'
     | '/pick-seats/$showingId'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   WaitersloginRoute: typeof WaitersloginRoute
   MovieMovieIdRoute: typeof MovieMovieIdRoute
+  OrderDetailOrderIdRoute: typeof OrderDetailOrderIdRoute
   PickSeatsShowingIdRoute: typeof PickSeatsShowingIdRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PickSeatsShowingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order-detail/$orderId': {
+      id: '/order-detail/$orderId'
+      path: '/order-detail/$orderId'
+      fullPath: '/order-detail/$orderId'
+      preLoaderRoute: typeof OrderDetailOrderIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/movie/$movieId': {
       id: '/movie/$movieId'
       path: '/movie/$movieId'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   WaitersloginRoute: WaitersloginRoute,
   MovieMovieIdRoute: MovieMovieIdRoute,
+  OrderDetailOrderIdRoute: OrderDetailOrderIdRoute,
   PickSeatsShowingIdRoute: PickSeatsShowingIdRoute,
 }
 export const routeTree = rootRouteImport
