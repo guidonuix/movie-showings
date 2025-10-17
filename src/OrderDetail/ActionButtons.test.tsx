@@ -1,10 +1,8 @@
-import { describe, test, vi, expect } from "vitest";
+import { describe, test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ActionButtons from "./ActionButtons";
-
-// Mock fetch globally
-global.fetch = vi.fn();
+import type { OrderType } from "../types/types";
 
 const createTestQueryClient = () =>
   new QueryClient({
@@ -23,16 +21,34 @@ const renderWithQueryClient = (component: React.ReactElement) => {
 };
 
 describe("ActionButtons Component", () => {
+  const testOrder: OrderType = {
+    id: 1,
+    status: "completed",
+    items: [],
+    tax: 0,
+    tip: 0,
+    orderTime: "",
+    pickupTime: "",
+    area: "",
+    location: "",
+    userId: 1,
+    creditCard: { pan: "", expiryYear: 2025, expiryMonth: 1 },
+  };
+
   test("should have no action buttons when completed", () => {
     // Test the completed status (default case returns null)
-    renderWithQueryClient(<ActionButtons status="completed" />);
+    const order = { ...testOrder, status: "completed" };
+    renderWithQueryClient(<ActionButtons status="completed" order={order} />);
 
     // Assert no buttons are rendered
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   test("should show 'Picked up' and 'Problem' buttons when status is readyForGuest", () => {
-    renderWithQueryClient(<ActionButtons status="readyForGuest" />);
+    const order = { ...testOrder, status: "readyForGuest" };
+    renderWithQueryClient(
+      <ActionButtons status="readyForGuest" order={order} />
+    );
 
     expect(
       screen.getByRole("button", { name: /picked up/i })
@@ -43,7 +59,8 @@ describe("ActionButtons Component", () => {
   });
 
   test("should show 'Delivered' and 'Problem' buttons when status is pickedUp", () => {
-    renderWithQueryClient(<ActionButtons status="pickedUp" />);
+    const order = { ...testOrder, status: "pickedUp" };
+    renderWithQueryClient(<ActionButtons status="pickedUp" order={order} />);
 
     expect(
       screen.getByRole("button", { name: /delivered/i })
@@ -54,7 +71,8 @@ describe("ActionButtons Component", () => {
   });
 
   test("should show only 'Problem' button when status is delivered", () => {
-    renderWithQueryClient(<ActionButtons status="delivered" />);
+    const order = { ...testOrder, status: "delivered" };
+    renderWithQueryClient(<ActionButtons status="delivered" order={order} />);
 
     expect(
       screen.getByRole("button", { name: /problem/i })

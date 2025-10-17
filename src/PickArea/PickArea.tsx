@@ -6,8 +6,8 @@ import useAuth from "../hooks/useAuth";
 
 const PickArea = () => {
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth();
-  const { selectedTheaterId, setSelectedTheaterId } = useSelectedTheaterStore();
+  const {  isAuthenticated } = useAuth();
+  const { setSelectedTheaterId } = useSelectedTheaterStore();
 
   const { isPending, error, data } = useQuery<TheaterType[]>({
     queryKey: ["theaters"],

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { Order } from "../types/types";
+import type { OrderType } from "../types/types";
 import { useSelectedTheaterStore } from "../store/selectedTheaterStore";
 import useAuth from "../hooks/useAuth";
 import {
@@ -12,7 +12,7 @@ const PickOrder = () => {
   const navigate = useNavigate();
   const { selectedTheaterId } = useSelectedTheaterStore();
   const { user, isAuthenticated } = useAuth();
-  const { isPending, error, data } = useQuery<Order[]>({
+  const { isPending, error, data } = useQuery<OrderType[]>({
     queryKey: ["orders"],
     queryFn: async () => {
       const response = await fetch(
