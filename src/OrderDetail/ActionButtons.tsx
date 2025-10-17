@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 import type { OrderType } from "../types/types";
 
 interface ActionButtonsProps {
@@ -7,6 +7,7 @@ interface ActionButtonsProps {
 }
 
 const ActionButtons = (props: ActionButtonsProps) => {
+  const queryClient = new QueryClient();
   const { mutateAsync: updateOrderStatus } = useMutation({
     mutationFn: async (newStatus: string) => {
       // Simulate an API call to update the order status
@@ -16,6 +17,9 @@ const ActionButtons = (props: ActionButtonsProps) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...props.order, status: newStatus }),
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["orderDetail", props.order.id],
       });
     },
   });
@@ -89,6 +93,19 @@ const ActionButtons = (props: ActionButtonsProps) => {
         <div className="flex gap-4">
           <button className="bg-red-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
             Problem
+          </button>
+        </div>
+      );
+    case "problem":
+      return (
+        <div className="flex gap-4">
+          <button
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            onClick={async () => {
+              await updateOrderStatus("completed");
+            }}
+          >
+            Completed
           </button>
         </div>
       );

@@ -24,9 +24,6 @@ const Login = () => {
 
   return (
     <>
-      <div className="back-button" onClick={() => history.go(-1)}>
-        &lt; Back
-      </div>
       <div className="container">
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -47,7 +44,9 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-          <button className="bg-green-600" type="submit">Login</button>
+          <button className="bg-green-600" type="submit">
+            Login
+          </button>
         </form>
       </div>
     </>

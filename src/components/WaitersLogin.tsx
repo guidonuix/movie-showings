@@ -29,9 +29,6 @@ const WaitersLogin = () => {
 
   return (
     <>
-      {/* <div className="back-button" onClick={() => history.go(-1)}>
-        &lt; Back
-      </div> */}
       <div className="container">
         <form className="form" onSubmit={handleSubmit}>
           <h2>Login</h2>
