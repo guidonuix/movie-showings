@@ -22,7 +22,7 @@ const OrderDetail = ({ orderId }: Props) => {
     },
   });
 
-  const { data: theaterData } = useQuery<TheaterType[]>({
+  const { data: theaterData, isPending: isTheaterPending, error: theaterError } = useQuery<TheaterType[]>({
     queryKey: ["theaters"],
     queryFn: async () => {
       const response = await fetch(
@@ -38,7 +38,7 @@ const OrderDetail = ({ orderId }: Props) => {
     return theater ? theater.name : "Unknown Theater";
   };
 
-  if (isPending) {
+  if (isPending || isTheaterPending) {
     return (
       <div className="flex justify-center items-center min-h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-600"></div>
@@ -49,7 +49,7 @@ const OrderDetail = ({ orderId }: Props) => {
     );
   }
 
-  if (error) {
+  if (error || theaterError) {
     return (
       <div className="bg-red-50 border border-red-200 rounded-lg p-4 mx-4">
         <div className="flex items-center">
@@ -145,7 +145,7 @@ const OrderDetail = ({ orderId }: Props) => {
           </div>
         )}
         {/* Wrapper to determine buttons */}
-        <ActionButtons status={orderData.status} />
+        <ActionButtons status={orderData.status} order={orderData} />
       </div>
 
       {/* Items by Person */}
