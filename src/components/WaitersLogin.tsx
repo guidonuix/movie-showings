@@ -53,7 +53,9 @@ const WaitersLogin = () => {
           <div className="error-container">
             {error && <span className="error">{error}</span>}
           </div>
-          <button type="submit">Login</button>
+          <button className="bg-green-600" type="submit">
+            Login
+          </button>
         </form>
       </div>
     </>
