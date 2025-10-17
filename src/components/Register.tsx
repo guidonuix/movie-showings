@@ -324,7 +324,9 @@ const Register = () => {
             )}
           </div>
 
-          <button type="submit">Register</button>
+          <button className="bg-green-600" type="submit">
+            Register
+          </button>
         </form>
       </div>
     </>

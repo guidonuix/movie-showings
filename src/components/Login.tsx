@@ -47,7 +47,7 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-          <button type="submit">Login</button>
+          <button className="bg-green-600" type="submit">Login</button>
         </form>
       </div>
     </>

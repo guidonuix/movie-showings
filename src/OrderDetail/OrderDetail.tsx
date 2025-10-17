@@ -22,7 +22,11 @@ const OrderDetail = ({ orderId }: Props) => {
     },
   });
 
-  const { data: theaterData, isPending: isTheaterPending, error: theaterError } = useQuery<TheaterType[]>({
+  const {
+    data: theaterData,
+    isPending: isTheaterPending,
+    error: theaterError,
+  } = useQuery<TheaterType[]>({
     queryKey: ["theaters"],
     queryFn: async () => {
       const response = await fetch(
@@ -217,9 +221,11 @@ const OrderDetail = ({ orderId }: Props) => {
             </svg>
             <span className="text-sm text-gray-600">Payment Method:</span>
           </div>
-          <span className="text-sm font-medium">
-            •••• •••• •••• {orderData.creditCard.pan.slice(-4)}
-          </span>
+          {orderData.creditCard?.pan && (
+            <span className="text-sm font-medium">
+              •••• •••• •••• {orderData.creditCard.pan.slice(-4)}
+            </span>
+          )}
         </div>
       </div>
 
