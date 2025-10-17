@@ -25,7 +25,7 @@ const ActionButtons = (props: ActionButtonsProps) => {
       return (
         <div className="flex gap-4">
           <button
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            className=" hover:bg-green-600 text-white font-bold py-2 px-4 rounded bg-blue-500"
             onClick={async () => {
               await updateOrderStatus("pickedUp");
             }}
@@ -33,7 +33,7 @@ const ActionButtons = (props: ActionButtonsProps) => {
             Picked up
           </button>
           <button
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-red-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
             onClick={async () => {
               await updateOrderStatus("problem");
             }}
@@ -54,7 +54,7 @@ const ActionButtons = (props: ActionButtonsProps) => {
             Delivered
           </button>
           <button
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-red-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
             onClick={async () => {
               await updateOrderStatus("problem");
             }}
@@ -87,7 +87,7 @@ const ActionButtons = (props: ActionButtonsProps) => {
     case "delivered":
       return (
         <div className="flex gap-4">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-red-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
             Problem
           </button>
         </div>
