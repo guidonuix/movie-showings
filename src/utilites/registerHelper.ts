@@ -1,3 +1,5 @@
+import type { UserType } from "../types/types";
+
 export const validatePanNumbers = (value: number) => {
   // Remove all non-digit characters
   const cleaned = ("" + value).replace(/\D/g, "");
@@ -16,4 +18,3 @@ export const validateEmail = (email: string) => {
 export const validatePasswordLength = (password: string) => {
     return password.length >= 5;
 }
-
