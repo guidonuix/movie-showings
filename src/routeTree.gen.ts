@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WaitersloginRouteImport } from './routes/waiterslogin'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PickSeatsShowingIdRouteImport } from './routes/pick-seats/$showingId'
 import { Route as MovieMovieIdRouteImport } from './routes/movie/$movieId'
 
+const WaitersloginRoute = WaitersloginRouteImport.update({
+  id: '/waiterslogin',
+  path: '/waiterslogin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/waiterslogin': typeof WaitersloginRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
   '/pick-seats/$showingId': typeof PickSeatsShowingIdRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/register'
+    | '/waiterslogin'
     | '/movie/$movieId'
     | '/pick-seats/$showingId'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/register'
+    | '/waiterslogin'
     | '/movie/$movieId'
     | '/pick-seats/$showingId'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/register'
+    | '/waiterslogin'
     | '/movie/$movieId'
     | '/pick-seats/$showingId'
   fileRoutesById: FileRoutesById
@@ -91,12 +103,20 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  WaitersloginRoute: typeof WaitersloginRoute
   MovieMovieIdRoute: typeof MovieMovieIdRoute
   PickSeatsShowingIdRoute: typeof PickSeatsShowingIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/waiterslogin': {
+      id: '/waiterslogin'
+      path: '/waiterslogin'
+      fullPath: '/waiterslogin'
+      preLoaderRoute: typeof WaitersloginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  WaitersloginRoute: WaitersloginRoute,
   MovieMovieIdRoute: MovieMovieIdRoute,
   PickSeatsShowingIdRoute: PickSeatsShowingIdRoute,
 }

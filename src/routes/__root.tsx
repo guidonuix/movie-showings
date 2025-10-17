@@ -10,24 +10,35 @@ const queryClient = new QueryClient();
 
 const RootLayout = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <header>
           <nav className="nav">
-            <div className="logo" onClick={() => navigate({ to: "/" })}>Dinner and a movie</div>
+            <div className="logo" onClick={() => navigate({ to: "/" })}>
+              Dinner and a movie
+            </div>
 
             {isAuthenticated ? (
-              <div className="logout" onClick={() => logout()}>
-                Logout
-              </div>
+              <>
+                <Link className="nav-item orders" to="/">
+                  Orders
+                </Link>
+                <Link className="nav-item areas" to="/">
+                  Areas
+                </Link>
+                <div className="nav-item logout" onClick={() => logout()}>
+                  Logout
+                </div>
+                <div className="nav-item">Hello, {user?.first}!</div>
+              </>
             ) : (
               <>
-                <Link className="login" to="/login">
+                <Link className="nav-item login" to="/login">
                   Login
                 </Link>
-                <Link className="register" to="/register">
+                <Link className="nav-item register" to="/register">
                   Register
                 </Link>
               </>

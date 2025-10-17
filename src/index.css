@@ -7,11 +7,19 @@ body {
   background-color: #f4f4f4;
 }
 
+footer{
+  color:gray;
+  font-size:14px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
 .logo{
   cursor: pointer;
 }
 
-.nav {
+/* .nav {
   display: flex;
   text-align: center;
   align-items: center;
@@ -20,26 +28,43 @@ body {
   padding: 10px 20px;
   background-color: blue;
   color: white;
+} */
+
+.nav {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+  padding: 10px 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item{
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
 }
 
 .login {
-  align-items: center;
+  align-items: bottom;
   display: flex;
-  font-size: 18px;
   cursor: pointer;
-  color: white;
-  text-decoration: none;
 }
 
 .register {
   text-decoration: none;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .logout {
   text-decoration: none;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
 }
